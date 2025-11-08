@@ -13,7 +13,7 @@ The main goals of this project were to:
 ---
 
 ## Project Structure
-
+```
 testing-and-debugging-ensuring-mern-app-reliability-MorganWambulwa/
 ├── client/
 │   ├── node_modules/
@@ -74,7 +74,7 @@ testing-and-debugging-ensuring-mern-app-reliability-MorganWambulwa/
 ├── package-lock.json
 ├── README.md
 └── Week6-Assignment.md
-
+```
 ---
 
 ## Features
