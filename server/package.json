@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "MERN Testing and Debugging Server",
+  "main": "src/server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "mern",
+    "testing",
+    "debugging",
+    "server"
+  ],
+  "author": "Morgan Wambulwa",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.1.3",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  }
+}
