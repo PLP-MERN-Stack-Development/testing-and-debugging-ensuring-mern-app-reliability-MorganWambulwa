@@ -5,7 +5,6 @@ const JWT_SECRET = process.env.JWT_SECRET || 'testsecret';
 const JWT_EXPIRES_IN = '1h';
 
 function generateToken(user) {
-  // Accept either mongoose doc or plain object with _id
   const payload = { id: user._id ? user._id.toString() : user.id };
   return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 }

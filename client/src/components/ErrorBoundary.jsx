@@ -12,13 +12,11 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // You can log the error to an external service here
     console.error("ErrorBoundary caught an error:", error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // Fallback UI
       return (
         <div style={{ padding: '2rem', textAlign: 'center', color: '#4e342e' }}>
           <h2>Something went wrong.</h2>

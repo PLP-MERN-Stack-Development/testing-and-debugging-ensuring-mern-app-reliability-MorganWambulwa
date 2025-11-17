@@ -7,7 +7,6 @@ const BugForm = ({ onSubmit, editingBug, cancelEdit }) => {
   const [status, setStatus] = useState('Open');
   const [priority, setPriority] = useState('Medium');
 
-  // Fill form when editing a bug
   useEffect(() => {
     if (editingBug) {
       setTitle(editingBug.title);
@@ -33,7 +32,6 @@ const BugForm = ({ onSubmit, editingBug, cancelEdit }) => {
     const bug = { title, description, status, priority };
     onSubmit(bug);
 
-    // Reset form if adding new bug
     if (!editingBug) {
       setTitle('');
       setDescription('');

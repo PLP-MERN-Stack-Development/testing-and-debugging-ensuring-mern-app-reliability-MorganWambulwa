@@ -13,13 +13,11 @@ let token;
 let userId;
 let postId;
 
-// Setup in-memory MongoDB server before all tests
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   const mongoUri = mongoServer.getUri();
   await mongoose.connect(mongoUri);
 
-  // Create a test user
   const user = await User.create({
     username: 'testuser',
     email: 'test@example.com',
@@ -28,7 +26,6 @@ beforeAll(async () => {
   userId = user._id;
   token = generateToken(user);
 
-  // Create a test post
   const post = await Post.create({
     title: 'Test Post',
     content: 'This is a test post content',
@@ -39,15 +36,13 @@ beforeAll(async () => {
   postId = post._id;
 });
 
-// Clean up after all tests
 afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
 });
 
-// Clean up database between tests
+
 afterEach(async () => {
-  // Keep the test user and post, but clean up any other created data
   const collections = mongoose.connection.collections;
   for (const key in collections) {
     const collection = collections[key];
@@ -93,7 +88,6 @@ describe('POST /api/posts', () => {
 
   it('should return 400 if validation fails', async () => {
     const invalidPost = {
-      // Missing title
       content: 'This post is missing a title',
       category: mongoose.Types.ObjectId().toString(),
     };
@@ -120,7 +114,6 @@ describe('GET /api/posts', () => {
   it('should filter posts by category', async () => {
     const categoryId = mongoose.Types.ObjectId().toString();
     
-    // Create a post with specific category
     await Post.create({
       title: 'Filtered Post',
       content: 'This post should be filtered by category',
@@ -139,7 +132,6 @@ describe('GET /api/posts', () => {
   });
 
   it('should paginate results', async () => {
-    // Create multiple posts
     const posts = [];
     for (let i = 0; i < 15; i++) {
       posts.push({
